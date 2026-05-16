@@ -1,8 +1,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace SUG_UnityCore
@@ -101,6 +99,27 @@ namespace SUG_UnityCore
                 _parentCache[markerType] = parGo.transform;
             }
             return parGo.transform;
+        }
+    }
+
+    /// <summary>
+    /// 继承了此Singleton的组件不会放在SingletonGlobal或SingletonLocal下，
+    /// 而是直接放在根节点下，适合不需要区分全局/本地的单例组件
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+    {
+        private static T _instance;
+
+        public static T Get()
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<T>(true);
+                if (_instance == null)
+                    _instance = new GameObject($"[{typeof(T).Name}]").AddComponent<T>();
+            }
+            return _instance;
         }
     }
 }
