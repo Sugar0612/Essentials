@@ -10,7 +10,7 @@ namespace SUG_UnityCore.UI
     {
         public static readonly Dictionary<Type, string> UIPaths = new()
         {
-            
+            // ex. { typeof(LoginUI), "UI/LoginUI" },
         };
     }
 }
