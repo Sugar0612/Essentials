@@ -54,8 +54,10 @@ namespace SUG_UnityCore
 
         protected void OnDestroy()
         {
-            if (_instance != null)
-                Destroy(_instance);
+            if (_instance == this)
+            {
+                _instance = null;
+            }
         }
 
         public static T Get()
@@ -89,7 +91,13 @@ namespace SUG_UnityCore
         private static Transform TryGetInstanceParent()
         {
             var markerType = typeof(S);
-            if (_parentCache.TryGetValue(markerType, out var v)) return v;
+            if (_parentCache.TryGetValue(markerType, out var v))
+            {
+                if (v != null) return v;
+
+                // 缓存的已经销毁了，删掉缓存
+                _parentCache.Remove(markerType);
+            }
             string parName = markerType == typeof(SingletonGlobal) ? GLOBAL_MANAGERS : LOCAL_MANAGERS;
             var parGo = GameObject.Find(parName);
             if (parGo == null)
