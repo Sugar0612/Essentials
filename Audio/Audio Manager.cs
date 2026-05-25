@@ -44,8 +44,7 @@ namespace SUG_UnityCore
 
         public void DoSomething() 
         {
-            ILogger logger = new UnityLogger();
-            logger.Log($"[AudioManager] DoSomething...");
+            LogHelper.Log($"[AudioManager] DoSomething...");
         }
 
         private void Update()
