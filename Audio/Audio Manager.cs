@@ -6,22 +6,34 @@ namespace SUG_UnityCore
     [RequireComponent(typeof(AudioSource))]
     public class AudioManager : Singleton<AudioManager, SingletonGlobal>
     {
+        // —— Components ——
         private AudioSource _audioSource;
 
+        // ==================
+        // Life cycle
+        // ==================
         private void Awake()
         {
             _audioSource = gameObject.GetComponent<AudioSource>();
             if (_audioSource == null) _audioSource = gameObject.AddComponent<AudioSource>();
             _audioSource.playOnAwake = false;
-            _audioSource.loop = false;
+            _audioSource.loop        = false;
         }
 
+        private void Update()
+        {
+
+        }
+
+        // ==================
+        // Core
+        // ==================
         public AudioClip Play(string path)
         {
             AudioClip c = TryLoadAudioClip(path);
             if (c == null) return null;
 
-            Stop();
+            Pause();
             _audioSource.clip = c;
             _audioSource.Play();
             return c;
@@ -31,7 +43,7 @@ namespace SUG_UnityCore
         {
             if (c == null) return;
 
-            Stop();
+            Pause();
             _audioSource.clip = c;
             _audioSource.Play();
         }
@@ -42,19 +54,16 @@ namespace SUG_UnityCore
             _audioSource.clip = null;
         }
 
-        public void DoSomething() 
+        public void Pause()
         {
-            LogHelper.Log($"[AudioManager] DoSomething...");
-        }
+            _audioSource.Pause();
+        }    
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-                SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-        }
-
+        // ==================
+        // Interface
+        // ==================
         public AudioClip TryLoadAudioClip(string path) => Resources.Load<AudioClip>(path);
-
         public bool IsPlaying() => _audioSource.isPlaying;
+        public void SetAudioSource(AudioSource source) => _audioSource = source; 
     }
 }
