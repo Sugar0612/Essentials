@@ -43,7 +43,7 @@ namespace SUG_UnityCore.UI
 
             // 层级设置
             int sortingOrder = _uiSortingOrder[baseUI.uiLevel];
-            SetupUILayer(uiObj, sortingOrder);
+            //SetupUILayer(uiObj, sortingOrder);
 
             T targetUI = uiObj.GetComponent<T>();
             targetUI.Init();
@@ -75,7 +75,7 @@ namespace SUG_UnityCore.UI
 
             // 层级设置
             int sortingOrder = _uiSortingOrder[baseUI.uiLevel];
-            SetupUILayer(uiObj, sortingOrder);
+            //SetupUILayer(uiObj, sortingOrder);
 
             T targetUI = uiObj.GetComponent<T>();
             targetUI.Init();

@@ -7,7 +7,7 @@ namespace SUG_UnityCore.UI
         [Header("UI层级")]
         public UILevel uiLevel;
 
-        [Header("是不是世界空间UI")]
+        [Header("世界空间UI")]
         public bool isWorldUI;
 
         public virtual void Init() { }

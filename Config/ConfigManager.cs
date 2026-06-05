@@ -21,6 +21,7 @@ namespace SUG_UnityCore
                 if (config == null) continue;
 
                 Type t = config.GetType();
+                Debug.Log(t);
                 if (!_configDict.ContainsKey(t)) _configDict.Add(t, config);
                 else _configDict[t] = config;
             }
@@ -37,7 +38,26 @@ namespace SUG_UnityCore
                 c = _configDict[typeof(T)];
                 return c as T;
             }
+
+            Type baseT = typeof(T);
+            foreach (var t in _configDict)
+            {
+                if (t.Key.IsSubclassOf(baseT)) return t.Value as T;
+            }
             return null;
+        }
+
+        public bool HasConfig<T>() where T : ScriptableObject
+        {
+            if (_configDict.ContainsKey(typeof(T))) return true;
+
+            Type baseT = typeof(T);
+            foreach (var t in _configDict)
+            {
+                if (t.Key.IsSubclassOf(baseT)) return true;
+            }
+
+            return false;
         }
     }
 }
