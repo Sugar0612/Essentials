@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SUG_UnityCore.UI
+namespace SUG_UnityCore
 {
     public sealed class UIManager : Singleton<UIManager, SingletonGlobal>
     {

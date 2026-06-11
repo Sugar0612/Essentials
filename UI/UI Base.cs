@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SUG_UnityCore.UI
+namespace SUG_UnityCore
 {
     public class UIBase : MonoBehaviour
     {
