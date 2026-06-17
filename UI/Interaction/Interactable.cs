@@ -10,6 +10,11 @@ namespace SUG_UnityCore
     /// </summary>
     public abstract class Interactable : MonoBehaviour, IInteractive
     {
+        // —— External event interface ——
+        public event Action onHoverEnter;
+        public event Action onHoverExit;
+        public event Action onClickEnter;
+
         // ==================
         // Event
         // ==================
@@ -20,8 +25,22 @@ namespace SUG_UnityCore
         // ==================
         // Interaface achieve
         // ==================
-        public void OnPointerEnter(PointerEventData eventData) => OnHoverEnter();
-        public void OnPointerExit(PointerEventData eventData) => OnHoverExit();
-        public void OnPointerClick(PointerEventData eventData) => OnClickEnter();
+        public void OnPointerEnter(PointerEventData eventData)
+        {           
+            OnHoverEnter(); 
+            onHoverEnter?.Invoke(); 
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            OnHoverExit(); 
+            onHoverExit?.Invoke(); 
+        }
+
+        public void OnPointerClick(PointerEventData eventData) 
+        {
+            OnClickEnter();
+            onClickEnter?.Invoke(); 
+        }
     }
 }

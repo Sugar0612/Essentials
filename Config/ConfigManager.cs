@@ -21,7 +21,6 @@ namespace SUG_UnityCore
                 if (config == null) continue;
 
                 Type t = config.GetType();
-                Debug.Log(t);
                 if (!_configDict.ContainsKey(t)) _configDict.Add(t, config);
                 else _configDict[t] = config;
             }

@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using SUG_UnityCore.Event;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,42 +15,34 @@ namespace SUG_UnityCore
         [Header("Dependent object.")]
         [SerializeField] protected ControlBase _dependent;
 
-        // —— Event variable —— 
-        public event Action onHoverEnter;
-        public event Action onHoverExit;
-        public event Action onClickEnter;
-
         // ===================
         // Life cycle
         // ===================
         protected virtual void Start() 
         {
-            if (_dependent == null) 
-            {
-                _dependent = GetComponent<ControlBase>();
-                if (_dependent == null) _dependent = gameObject.AddComponent<ControlBase>();
-            }
-
-            EventInit();
-            //RegisterEvent();
+            if (_dependent == null)  _dependent = GetComponent<ControlBase>();
+            _dependent.onTrigger += OnTrigger;
         }
 
         // ===================
         // Initialized
         // ===================
-        protected virtual void EventInit()
+        public virtual void OnTrigger(InteractionTrigger trigger, ControlType types)
         {
-            //Debug.Log("Efffect base event init.");
-            // onHoverEnter += () => Debug.Log("Effect base hover enter.");
-            // onHoverExit  += () => Debug.Log("Effect base hover exit.");
-            // onClickEnter += () => Debug.Log("Effect base click enter.");    
+            if (trigger == InteractionTrigger.HoverEnter) HoverEnter(types);
+            else if (trigger == InteractionTrigger.HoverExit) HoverExit(types);
+            else if (trigger == InteractionTrigger.DeSelect) DeSelect(types);
+            else if (trigger == InteractionTrigger.Selected) Selected(types);
+            else if (trigger == InteractionTrigger.UnSelctable) UnSelectable(types);
         }
 
-        public void RegisterEvent<T>(Action action) where T : EffectBase
-        {
-            if (_dependent == null) return;
-
-            _dependent.Subscribe<T>(action);
-        }
+        // ===================
+        // Virtual interface
+        // ===================
+        public virtual void DeSelect(ControlType types) { } // 点击取消了
+        public virtual void Selected(ControlType types) { } // 点击成功
+        public virtual void UnSelectable(ControlType types) { } // 点击失败
+        public virtual void HoverEnter(ControlType types) { } // 光标悬浮进入
+        public virtual void HoverExit(ControlType types) { } // 光标悬浮退出
     }
 }
