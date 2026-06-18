@@ -21,7 +21,6 @@ namespace SUG_UnityCore
 
         private void OnSceneLoad(Scene sc, LoadSceneMode mode)
         {
-            UnityEngine.Debug.Log("ddd");
             UIManager uiMgr = UIManager.Get();
             if (ConfigManager.Get().HasConfig<SceneLocalConfig>())
             {

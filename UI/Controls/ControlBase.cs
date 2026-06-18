@@ -10,9 +10,12 @@ namespace SUG_UnityCore
 {
     public abstract class ControlBase : Interactable
     {
+        [Header("Button type")]
+        public ControlType type;
+
         public event Action<InteractionTrigger, ControlType> onTrigger;
 
-        public void RaiseTrigger(InteractionTrigger trigger, ControlType type = ControlType.Normal)
+        public void RaiseTrigger(InteractionTrigger trigger)
         {
             onTrigger?.Invoke(trigger, type);
         }

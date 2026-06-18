@@ -16,31 +16,12 @@ namespace SUG_UnityCore
         public event Action onClickEnter;
 
         // ==================
-        // Event
-        // ==================
-        protected virtual void OnHoverEnter() { }
-        protected virtual void OnHoverExit() { }
-        protected virtual void OnClickEnter() { }
-
-        // ==================
         // Interaface achieve
         // ==================
-        public void OnPointerEnter(PointerEventData eventData)
-        {           
-            OnHoverEnter(); 
-            onHoverEnter?.Invoke(); 
-        }
+        public void OnPointerEnter(PointerEventData eventData) => onHoverEnter?.Invoke();
 
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            OnHoverExit(); 
-            onHoverExit?.Invoke(); 
-        }
+        public void OnPointerExit(PointerEventData eventData) => onHoverExit?.Invoke();
 
-        public void OnPointerClick(PointerEventData eventData) 
-        {
-            OnClickEnter();
-            onClickEnter?.Invoke(); 
-        }
+        public void OnPointerClick(PointerEventData eventData) => onClickEnter?.Invoke();
     }
 }
