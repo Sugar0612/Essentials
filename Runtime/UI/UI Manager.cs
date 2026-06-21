@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SUG_UnityCore
 {
-    public sealed class UIManager : Singleton<UIManager, SingletonGlobal>
+    public sealed class UIManager : Singleton<UIManager, SingletonLocal>
     {
         [Header("UI根节点")]
         [Tooltip("屏幕空间UI的根")]

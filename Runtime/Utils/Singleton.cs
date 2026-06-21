@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace SUG_UnityCore
@@ -70,6 +71,8 @@ namespace SUG_UnityCore
                 if (arr.Length > 1) 
                     logger.LogError($"找到多个 {typeof(T).Name} 单例实例！只会保留第一个，其他的会被忽略。");
 
+                // 检查如果是Glbaol Manager是否缺少 GlobalManagersRoot组件。
+                CheckInstanceParent();
                 _instance = arr[0];
                 return _instance;
             }
@@ -107,6 +110,16 @@ namespace SUG_UnityCore
                 _parentCache[markerType] = parGo.transform;
             }
             return parGo.transform;
+        }
+
+        private static void CheckInstanceParent()
+        {
+            var parTrans = TryGetInstanceParent();
+            if (parTrans != null && typeof(S) == typeof(SingletonGlobal))
+            {
+                var globalRoot = parTrans.GetComponent<GlobalManagersRoot>();
+                if (globalRoot == null) parTrans.AddComponent<GlobalManagersRoot>();
+            }
         }
     }
 
