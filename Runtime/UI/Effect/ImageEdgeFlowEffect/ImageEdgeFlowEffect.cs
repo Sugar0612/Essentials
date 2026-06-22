@@ -18,8 +18,9 @@ namespace SUG_UnityCore
         // ===================
         // Life cycle
         // ===================
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             // if(mat == null)
             // {
             //     Image img = GetComponent<Image>();
@@ -104,7 +105,7 @@ namespace SUG_UnityCore
         // =====================
         // Override function
         // ====================
-        public override void Selected(ControlType type) => PlayFlow();
-        public override void DeSelect(ControlType type) => StopFlow();
+        public override void Play() => PlayFlow();
+        public override void Stop() => StopFlow();
     }
 }

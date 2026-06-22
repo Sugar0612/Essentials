@@ -11,7 +11,8 @@ namespace SUG_UnityCore
         public static readonly Dictionary<Type, string> UIPaths = new()
         {
             // ex. { typeof(LoginUI), "UI/LoginUI" },
-            { typeof(SelectPanel), "Prefabs/SelectPanel" }
+            { typeof(SelectPanel), "Prefabs/SelectPanel" },
+            { typeof (TheoryPanel), "Prefabs/TheoryPanel"}
         };
     }
 }

@@ -32,10 +32,6 @@ namespace SUG_UnityCore
         // =====================
         // Override function
         // =====================
-        public override void Selected(ControlType types) => PlayClip(InteractionTrigger.Selected, types);
-        public override void HoverEnter(ControlType types) => PlayClip(InteractionTrigger.HoverEnter, types);
-        public override void HoverExit(ControlType types) => PlayClip(InteractionTrigger.HoverExit, types);
-        public override void UnSelectable(ControlType types) => PlayClip(InteractionTrigger.UnSelctable, types);
-        public override void DeSelect(ControlType types) => PlayClip(InteractionTrigger.DeSelect, types);
+        public override void Play() => PlayClip(_currInterTrigger, _currControlType);
     }
 }

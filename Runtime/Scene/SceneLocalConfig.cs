@@ -14,4 +14,10 @@ namespace SUG_UnityCore
     {
 
     }
+
+    [CreateAssetMenu(fileName = "TheorySceneConfig", menuName = "Game/Scenes/TheorySceneConfig")]
+    public class TheorySceneConfig : SceneLocalConfig
+    {
+
+    }
 }

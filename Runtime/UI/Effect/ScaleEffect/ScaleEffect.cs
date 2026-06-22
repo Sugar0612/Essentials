@@ -46,10 +46,10 @@ namespace SUG_UnityCore
         // ===================
         // Override function
         // ===================
-        public override void HoverEnter(ControlType type) => OnZoomIn();
+        public override void Play() => OnZoomIn();
 
-        public override void HoverExit(ControlType type) => OnNormal();
+        public override void Stop() => OnNormal();
 
-        public override void Selected(ControlType type) => SetScale(_selectScale, clickDur, () => OnNormal());
+        public override void Other() => SetScale(_selectScale, clickDur, () => OnNormal());
     }
 }

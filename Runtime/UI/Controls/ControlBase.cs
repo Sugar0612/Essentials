@@ -21,13 +21,15 @@ namespace SUG_UnityCore
         }
     }
 
+    [Flags]
     public enum InteractionTrigger
     {
-        HoverEnter,  // 鼠标移动进入
-        HoverExit, // 鼠标移动退出
-        DeSelect, // 取消选中
-        UnSelctable, // 无法选中/选择失败
-        Selected, // 选中/选择成功
+        None = 0,
+        HoverEnter = 1 << 0,  // 鼠标移动进入
+        HoverExit = 1 << 1, // 鼠标移动退出
+        DeSelect = 1 << 2, // 取消选中
+        UnSelctable = 1 << 3, // 无法选中/选择失败
+        Selected = 1 << 4, // 选中/选择成功
     }
 
     [Flags]

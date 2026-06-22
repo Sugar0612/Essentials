@@ -33,6 +33,6 @@ namespace SUG_UnityCore
         // Override function from base
         // ============================
 
-        public override void UnSelectable(ControlType types) => PlayShake();
+        public override void Play() => PlayShake();
     }
 }
