@@ -15,6 +15,18 @@ namespace SUG_UnityCore
 
         public event Action<InteractionTrigger, ControlType> onTrigger;
 
+        // =============
+        // Life cycle
+        // =============
+        private void OnEnable()
+        {
+            onHoverEnter += () => RaiseTrigger(InteractionTrigger.HoverEnter);
+            onHoverExit += () => RaiseTrigger(InteractionTrigger.HoverExit);
+        }
+
+        // =============
+        // Core
+        // =============
         public void RaiseTrigger(InteractionTrigger trigger)
         {
             onTrigger?.Invoke(trigger, type);

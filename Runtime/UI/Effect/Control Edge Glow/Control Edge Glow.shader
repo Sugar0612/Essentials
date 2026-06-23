@@ -1,4 +1,4 @@
-Shader "Custom/UI/ControlGlow"
+Shader "Custom/UI/EdgeGlow"
 {
     Properties
     {
@@ -7,14 +7,10 @@ Shader "Custom/UI/ControlGlow"
         _Color ("Tint", Color) = (1,1,1,1)
 
         _GlowColor ("Glow Color", Color) = (0.3,0.7,1,1)
+
         _GlowIntensity ("Glow Intensity", Range(0,20)) = 0
+
         _GlowWidth ("Glow Width", Range(1,20)) = 4
-
-        _PulseSpeed ("Pulse Speed", Range(0,10)) = 2
-
-        _FlowColor ("Flow Color", Color) = (1,1,1,1)
-        _FlowWidth ("Flow Width", Range(0.01,0.5)) = 0.15
-        _FlowSpeed ("Flow Speed", Range(0,10)) = 1
     }
 
     SubShader
@@ -64,12 +60,6 @@ Shader "Custom/UI/ControlGlow"
             float _GlowIntensity;
             float _GlowWidth;
 
-            float _PulseSpeed;
-
-            float4 _FlowColor;
-            float _FlowWidth;
-            float _FlowSpeed;
-
             v2f vert(appdata v)
             {
                 v2f o;
@@ -89,8 +79,8 @@ Shader "Custom/UI/ControlGlow"
 
                 float maxAlpha = 0;
 
-                maxAlpha = max(maxAlpha, tex2D(_MainTex, uv + float2( texel.x,0)).a);
-                maxAlpha = max(maxAlpha, tex2D(_MainTex, uv + float2(-texel.x,0)).a);
+                maxAlpha = max(maxAlpha, tex2D(_MainTex, uv + float2( texel.x, 0)).a);
+                maxAlpha = max(maxAlpha, tex2D(_MainTex, uv + float2(-texel.x, 0)).a);
 
                 maxAlpha = max(maxAlpha, tex2D(_MainTex, uv + float2(0, texel.y)).a);
                 maxAlpha = max(maxAlpha, tex2D(_MainTex, uv + float2(0,-texel.y)).a);
@@ -113,48 +103,12 @@ Shader "Custom/UI/ControlGlow"
                 float alpha = col.a;
 
                 float outline =
-                    saturate(
-                        SampleOutline(i.uv)
-                        - alpha
-                    );
-
-                float pulse =
-                    0.75 +
-                    0.25 *
-                    sin(_Time.y * _PulseSpeed);
-
-                float glow =
-                    outline *
-                    pulse *
-                    _GlowIntensity;
+                    SampleOutline(i.uv)
+                    *
+                    (1 - alpha);
 
                 col.rgb +=
                     _GlowColor.rgb *
-                    glow;
-
-                float flowPos =
-                    frac(
-                        i.uv.x +
-                        _Time.y * _FlowSpeed
-                    );
-
-                float flow =
-                    smoothstep(
-                        0,
-                        _FlowWidth,
-                        flowPos
-                    )
-                    *
-                    (1 -
-                     smoothstep(
-                        _FlowWidth,
-                        _FlowWidth * 2,
-                        flowPos
-                     ));
-
-                col.rgb +=
-                    _FlowColor.rgb *
-                    flow *
                     outline *
                     _GlowIntensity;
 

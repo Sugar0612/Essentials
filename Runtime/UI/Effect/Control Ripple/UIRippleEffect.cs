@@ -3,9 +3,12 @@ using UnityEngine.UI;
 
 namespace SUG_UnityCore
 {
-    public class UIGlowEffect : EffectBase
+    /// <summary>
+    /// 特效控件波光
+    /// </summary>
+    public class UIRippleEffect : EffectBase
     {
-[Header("Reference")]
+        [Header("Reference")]
         [SerializeField]
         private Image _image;
 
@@ -18,7 +21,7 @@ namespace SUG_UnityCore
         private float glowWidth = 4f;
 
         [SerializeField]
-        private float glowIntensity = 6f;
+        private float glowIntensity = 15f;
 
         [SerializeField]
         private float pulseSpeed = 2f;
@@ -56,10 +59,8 @@ namespace SUG_UnityCore
         private static readonly int FlowSpeedID =
             Shader.PropertyToID("_FlowSpeed");
 
-        protected virtual void Awake()
+        protected void Start()
         {
-            base.Awake();
-
             if (_image == null)
                 _image = GetComponent<Image>();
 
@@ -70,7 +71,8 @@ namespace SUG_UnityCore
                 _runtimeMat;
 
             Apply();
-            SetGlow(false);
+            _image.SetMaterialDirty();
+            SetRipple(false);
         }
 
         private void Apply()
@@ -103,20 +105,21 @@ namespace SUG_UnityCore
                 flowSpeed);
         }
 
-        public void SetGlow(bool active)
+        public void SetRipple(bool active)
         {
             if (_runtimeMat == null)
                 return;
 
+            float value = active ? glowIntensity : 0;
             _runtimeMat.SetFloat(
                 GlowIntensityID,
-                active ? glowIntensity : 0);
+                value);
         }
 
         // =================
         // Override
         // =================
-        public override void Play() { Debug.Log("Play Glow"); SetGlow(true);}
-        public override void Stop() => SetGlow(false);
+        public override void Play() => SetRipple(true);
+        public override void Stop() => SetRipple(false);
     }
 }

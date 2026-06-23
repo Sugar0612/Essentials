@@ -39,10 +39,9 @@ namespace SUG_UnityCore
         // ===================
         public virtual void OnTrigger(InteractionTrigger trigger, ControlType types)
         {
-            Debug.Log($"Inter Trigger: {trigger}, Control type: {types}");
             _currInterTrigger = trigger;
             _currControlType = types;
-            
+
             if ((trigger & _playTrigger) != 0) Play();
             if ((trigger & _stopTrigger) != 0) Stop();
             if ((trigger & _otherTrigger) != 0) Other();
