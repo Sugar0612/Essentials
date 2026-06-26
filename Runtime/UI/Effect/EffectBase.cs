@@ -19,6 +19,10 @@ namespace SUG_UnityCore
         [SerializeField] private InteractionTrigger _stopTrigger;
         [SerializeField] private InteractionTrigger _otherTrigger;
 
+        // 控制Effect参数
+        [Header("Effect常驻效果"), SerializeField]
+        private bool alwaysActive = false;
+
         protected InteractionTrigger _currInterTrigger;
         protected ControlType _currControlType;
 
@@ -32,6 +36,17 @@ namespace SUG_UnityCore
             if (_dependent == null) _dependent = GetComponentInChildren<ControlBase>();
 
             _dependent.onTrigger += OnTrigger;
+        }
+
+        private void OnEnable()
+        {
+            if (alwaysActive == false) return;
+            Play();
+        }
+
+        private void FixedUpdate()
+        {
+
         }
 
         // ===================

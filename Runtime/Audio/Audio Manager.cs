@@ -43,7 +43,7 @@ namespace SUG_UnityCore
         {
             if (c == null) return;
 
-            Pause();
+            Stop();
             _audioSource.clip = c;
             _audioSource.Play();
         }

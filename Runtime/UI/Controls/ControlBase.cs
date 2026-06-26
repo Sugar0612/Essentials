@@ -30,7 +30,7 @@ namespace SUG_UnityCore
         public void RaiseTrigger(InteractionTrigger trigger)
         {
             onTrigger?.Invoke(trigger, type);
-        }
+        } 
     }
 
     [Flags]
@@ -50,6 +50,7 @@ namespace SUG_UnityCore
         None = 0, // 无
         Start = 1 << 0, // 开始类型
         Normal = 1 << 1, // 一般类型
+        Theory = 1 << 2, // 理论模式
     }
 
     // For example:

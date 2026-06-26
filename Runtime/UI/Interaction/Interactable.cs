@@ -23,5 +23,8 @@ namespace SUG_UnityCore
         public void OnPointerExit(PointerEventData eventData) => onHoverExit?.Invoke();
 
         public void OnPointerClick(PointerEventData eventData) => onClickEnter?.Invoke();
+
+        // Interface
+        public void OnPointClick() => onClickEnter?.Invoke();
     }
 }
