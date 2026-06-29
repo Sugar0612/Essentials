@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using SUG_UnityCore;
+using SUG.UnityCore;
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public class ImageEdgeFlowEffect : EffectBase
     {

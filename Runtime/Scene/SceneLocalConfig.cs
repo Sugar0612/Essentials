@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using SUG_UnityCore;
+using SUG.UnityCore;
 using UnityEngine;
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public class SceneLocalConfig : ScriptableObject
     {

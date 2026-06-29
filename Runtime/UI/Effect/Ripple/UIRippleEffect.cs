@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     /// <summary>
     /// 特效控件波光

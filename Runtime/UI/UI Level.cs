@@ -1,5 +1,5 @@
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public enum UILevel
     {

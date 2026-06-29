@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public class FileLogger : ILogger
     {

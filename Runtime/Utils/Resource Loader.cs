@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 资源加载工具
 /// </summary>
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public class ResourceLoader : Singleton<ResourceLoader, SingletonGlobal>
     {

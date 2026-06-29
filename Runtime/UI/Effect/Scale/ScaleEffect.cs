@@ -1,9 +1,9 @@
 using UnityEngine;
-using SUG_UnityCore;
+using SUG.UnityCore;
 using DG.Tweening;
 using System;
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public class ScaleEffect : EffectBase
     {

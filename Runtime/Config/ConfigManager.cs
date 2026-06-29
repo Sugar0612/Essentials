@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public class ConfigManager : Singleton<ConfigManager, SingletonLocal>
     {

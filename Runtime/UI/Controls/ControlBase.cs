@@ -1,12 +1,11 @@
 using UnityEngine;
-using SUG_UnityCore;
+using SUG.UnityCore;
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.Windows.Speech;
 using System.Collections.Generic;
-using TMPro;
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public abstract class ControlBase : Interactable
     {
@@ -55,7 +54,7 @@ namespace SUG_UnityCore
 
     // For example:
     /*
-        using SUG_UnityCore;
+        using SUG.UnityCore;
 
         public class NormalButton : ControlBase
         {

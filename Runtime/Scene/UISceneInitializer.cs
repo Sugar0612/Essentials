@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Diagnostics;
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public class UISceneInitializer : Singleton<UISceneInitializer, SingletonGlobal>
     {

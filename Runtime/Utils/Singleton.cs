@@ -1,10 +1,9 @@
 
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     public interface ISingleton { }
     /// <summary>
@@ -118,7 +117,7 @@ namespace SUG_UnityCore
             if (parTrans != null && typeof(S) == typeof(SingletonGlobal))
             {
                 var globalRoot = parTrans.GetComponent<GlobalManagersRoot>();
-                if (globalRoot == null) parTrans.AddComponent<GlobalManagersRoot>();
+                if (globalRoot == null) parTrans.gameObject.AddComponent<GlobalManagersRoot>();
             }
         }
     }

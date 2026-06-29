@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SUG_UnityCore
+namespace SUG.UnityCore
 {
     /// <summary>
     /// 所有UI的路径配置，统一管理，再也不用到处写字符串了
@@ -11,8 +11,8 @@ namespace SUG_UnityCore
         public static readonly Dictionary<Type, string> UIPaths = new()
         {
             // ex. { typeof(LoginUI), "UI/LoginUI" },
-            { typeof(SelectPanel), "Prefabs/SelectPanel" },
-            { typeof (TheoryPanel), "Prefabs/TheoryPanel"}
+            //{ typeof(SelectPanel), "Prefabs/SelectPanel" },
+            //{ typeof (TheoryPanel), "Prefabs/TheoryPanel"}
         };
     }
 }
