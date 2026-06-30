@@ -1,12 +1,12 @@
-using SUG.UnityCore;
+using SUG.Essentials;
 using UnityEngine;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     public class TriggerSoundEffect : EffectBase
     {
         // —— Config variable ——
-        private UIInteractionSound _soundCfg;
+        private UISoundCueSO _soundCfg;
 
         // =====================
         // Core function
@@ -24,7 +24,7 @@ namespace SUG.UnityCore
 
         private void PlayClip(InteractionTrigger trigger, ControlType types)
         {
-            if (_soundCfg == null) _soundCfg = ConfigManager.Get().GetConfig<UIInteractionSound>();
+            if (_soundCfg == null) _soundCfg = ConfigManager.Get().GetConfig<UISoundCueSO>();
             AudioClip c = GetClip(trigger, types);
             AudioManager.Get().Play(c);
         }

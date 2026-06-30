@@ -1,19 +1,21 @@
 {
-  "name": "com.sug.unitycore",
-  "displayName": "SUG Unity Core",
+  "name": "com.sug.essentials",
+  "displayName": "Essentials",
   "version": "0.1.0",
   "unity": "2022.3",
-  "description": "SUG Unity Core Framework",
+  "description": "A modular foundation library for Unity development.",
 
   "author": {
     "name": "Shiyi Tang"
   },
 
-  "keywords": [
+"keywords": [
     "unity",
-    "framework",
-    "core"
-  ],
+    "utilities",
+    "runtime",
+    "editor",
+    "toolkit"
+],
 
   "license": "MIT"
 }

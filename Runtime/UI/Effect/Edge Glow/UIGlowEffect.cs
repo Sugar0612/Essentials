@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     public class UIEdgeGlowEffect : EffectBase
     {

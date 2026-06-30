@@ -1,8 +1,8 @@
 {
-    "name": "SUG.UnityCore.Editor",
+    "name": "SUG.Essentials.Runtime",
     "rootNamespace": "",
     "references": [
-        "GUID:c6d65be38b296554da8bb6df5214db2c"
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

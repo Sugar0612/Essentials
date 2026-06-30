@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     public class SceneAttribute : PropertyAttribute
     {

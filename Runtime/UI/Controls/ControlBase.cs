@@ -1,11 +1,11 @@
 using UnityEngine;
-using SUG.UnityCore;
+using SUG.Essentials;
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.Windows.Speech;
 using System.Collections.Generic;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     public abstract class ControlBase : Interactable
     {
@@ -54,7 +54,7 @@ namespace SUG.UnityCore
 
     // For example:
     /*
-        using SUG.UnityCore;
+        using SUG.Essentials;
 
         public class NormalButton : ControlBase
         {

@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading;
 using UnityEngine;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     public class FileWriter : IFileWriter
     {

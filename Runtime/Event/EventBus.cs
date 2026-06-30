@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SUG.UnityCore.Event
+namespace SUG.Essentials.Event
 {
     // ====================== 普通事件（无返回值） ======================
     public interface IEventBus { }

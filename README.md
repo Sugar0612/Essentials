@@ -1,2 +1,25 @@
-# SugarUnityCore
-Universal library of personal code based on Unity.
+Essentials
+
+A modular foundation library for Unity development.
+
+Features
+
+✔ Logger
+
+✔ EventBus
+
+✔ Audio
+
+✔ Pool
+
+✔ Scene
+
+✔ Singleton
+
+✔ Attributes
+
+✔ Editor
+
+Installation
+
+...

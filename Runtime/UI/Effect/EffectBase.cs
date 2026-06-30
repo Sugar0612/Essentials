@@ -1,10 +1,10 @@
 using System;
 using JetBrains.Annotations;
-using SUG.UnityCore.Event;
+using SUG.Essentials.Event;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     /// <summary>
     /// UI特效基类，提供了基本的特效接口，所有UI特效都应该继承自这个类

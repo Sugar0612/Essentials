@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     public interface ILogger
     {

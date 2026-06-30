@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     [RequireComponent(typeof(AudioSource))]
     public class AudioManager : Singleton<AudioManager, SingletonGlobal>, IAudioService

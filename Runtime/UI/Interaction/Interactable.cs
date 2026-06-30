@@ -1,9 +1,9 @@
 using UnityEngine;
-using SUG.UnityCore;
+using SUG.Essentials;
 using System;
 using UnityEngine.EventSystems;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     /// <summary>
     /// 可交互的UI控件基类，提供了基本的交互事件，所有可交互UI控件都应该继承自这个类

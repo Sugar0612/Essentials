@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     public interface ISingleton { }
     /// <summary>

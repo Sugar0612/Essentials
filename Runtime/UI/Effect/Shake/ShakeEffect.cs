@@ -1,8 +1,8 @@
 using DG.Tweening;
-using SUG.UnityCore;
+using SUG.Essentials;
 using UnityEngine;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     public sealed class ShakeEffect : EffectBase
     {

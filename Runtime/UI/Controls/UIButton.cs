@@ -1,5 +1,5 @@
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     public class UIButton : ControlBase
     {

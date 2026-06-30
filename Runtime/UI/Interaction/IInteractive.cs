@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace SUG.UnityCore
+namespace SUG.Essentials
 {
     /// <summary>
     /// UGUI的UI控件交互接口

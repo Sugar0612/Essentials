@@ -1,8 +1,8 @@
-using SUG.UnityCore;
+using SUG.Essentials;
 using UnityEditor;
 using UnityEngine;
 
-namespace SUG.UnityCore.Editor
+namespace SUG.Essentials.Editor
 {
     [CustomPropertyDrawer(typeof(SceneAttribute))]
     public class SceneAttributeDrawer : PropertyDrawer
