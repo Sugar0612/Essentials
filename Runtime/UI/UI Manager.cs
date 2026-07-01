@@ -8,12 +8,10 @@ namespace SUG.Essentials
         private readonly Dictionary<string, UIBase> _uiCache = new();
 
         private readonly UIPanelConfigSO _panelCfg;
-        private readonly UIContext _context;
 
-        public UIManager(UISettingsSO settings, UIContext context)
+        public UIManager(UISettingsSO settings)
         {
             _panelCfg = settings.panelCfg;
-            _context = context;
         }
 
         public T OpenUI<T>() where T : UIBase
@@ -26,14 +24,13 @@ namespace SUG.Essentials
                 return ui as T;
             }
 
-            var cfg   = _panelCfg.uiConfigs.Find(x => x.prefab.name == uiName);
+            var cfg  = _panelCfg.uiConfigs.Find(x => x.prefab.name == uiName);
             var prefab = cfg?.prefab;
-            var parent  = cfg?.parent;
 
-            if (prefab == null)
-                return null;
+            if (prefab == null) return null;
 
-            var uiObj = _context.Create(prefab, parent);
+            //var uiObj = _context.Create(prefab, "");
+            var uiObj = Essentials.Instantiate(prefab);
             var targetUI = uiObj.GetComponent<T>();
             targetUI.Init();
             targetUI.Show();
@@ -53,7 +50,6 @@ namespace SUG.Essentials
 
                 if (destroy)
                 {
-                    _context.Destroy(ui.gameObject);
                     _uiCache.Remove(name);
                 }
             }

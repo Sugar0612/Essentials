@@ -12,7 +12,6 @@ namespace SUG.Essentials
         public class UIConfigItem
         {
             public GameObject prefab;
-            public Transform parent;
         }
 
         public List<UIConfigItem> uiConfigs = new();

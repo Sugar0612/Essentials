@@ -1,5 +1,6 @@
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace SUG.Essentials
 {
@@ -8,8 +9,6 @@ namespace SUG.Essentials
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Boot()
         {
-            Debug.Log("[Essentials] Boot Start");
-
             Essentials.Initialize();
         }
     }
