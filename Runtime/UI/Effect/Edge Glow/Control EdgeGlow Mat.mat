@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Control EdgeGlow Mat
-  m_Shader: {fileID: 4800000, guid: 52bfad0a8a95404498b172aee0cffdbd, type: 3}
+  m_Shader: {fileID: 4800000, guid: 400408ddab256584c83f8a9f1a42e2f6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

@@ -8,11 +8,14 @@ namespace SUG.Essentials
         // —— Config variable ——
         private UISoundCueSO _soundCfg;
 
+        [EInject] private ICfgService _cfgMgr;
+
         // =====================
         // Core function
         // =====================
         private AudioClip GetClip(InteractionTrigger trigger, ControlType t)
         {
+            if (_soundCfg == null) _soundCfg = Essentials.Settings.uiSetting.sound;
             foreach (var rule in _soundCfg.rules)
             {
                 if (rule == null || rule.trigger != trigger) continue;
@@ -24,7 +27,7 @@ namespace SUG.Essentials
 
         private void PlayClip(InteractionTrigger trigger, ControlType types)
         {
-            if (_soundCfg == null) _soundCfg = ConfigManager.Get().GetConfig<UISoundCueSO>();
+            if (_soundCfg == null) _soundCfg = _cfgMgr.GetConfig<UISoundCueSO>();
             AudioClip c = GetClip(trigger, types);
             AudioManager.Get().Play(c);
         }

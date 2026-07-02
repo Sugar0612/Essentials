@@ -1,21 +1,18 @@
 using System.Collections.Generic;
+using UnityEngine;
 using static SUG.Essentials.UIPanelConfigSO;
 
 namespace SUG.Essentials
 {
-    public sealed class UIManager : IUIService
+    public sealed class UIManager : MonoBehaviour, IUIService, IGlobalService
     {
         private readonly Dictionary<string, UIBase> _uiCache = new();
 
-        private readonly UIPanelConfigSO _panelCfg;
-
-        public UIManager(UISettingsSO settings)
-        {
-            _panelCfg = settings.panelCfg;
-        }
+        private UIPanelConfigSO _panelCfg;
 
         public T OpenUI<T>() where T : UIBase
         {
+            Debug.Log($"OPEN UI : {typeof(T)}");
             string uiName = typeof(T).Name;
 
             if (_uiCache.TryGetValue(uiName, out var ui))
@@ -24,6 +21,7 @@ namespace SUG.Essentials
                 return ui as T;
             }
 
+            if (_panelCfg == null) _panelCfg = Essentials.Settings.uiSetting.panelCfg; 
             var cfg  = _panelCfg.uiConfigs.Find(x => x.prefab.name == uiName);
             var prefab = cfg?.prefab;
 
