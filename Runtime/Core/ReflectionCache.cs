@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace SUG.Essentials
 {
@@ -17,6 +18,11 @@ namespace SUG.Essentials
             _interfaceCache[type] = result;
 
             return result;
+        }
+
+        public static void Clear()
+        {
+            _interfaceCache.Clear();
         }
     }
 }

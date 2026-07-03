@@ -20,8 +20,10 @@ namespace SUG.Essentials
             // 加载Essentials总配置表
             Settings = Resources.Load<EssentialsSettingsSO>("Essentials/Bootstrap");
 
+            // 注册场景中所有的 IGlobalService 和 ISceneService
             ServiceScanner.Initialize();
 
+            // 场景中所有的Mono注入
             AutoInjector.Initialize();
         }
 

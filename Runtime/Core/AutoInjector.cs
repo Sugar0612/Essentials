@@ -22,13 +22,13 @@ namespace SUG.Essentials
 
                 foreach (var behaviour in behaviours)
                 {
-                    if (behaviour == null)
-                        continue;
+                    if (behaviour == null) continue;
 
                     // 没有 [EInject] 字段就直接跳过
-                    if (!HasInjectField(behaviour.GetType()))
-                        continue;
+                    if (!HasInjectField(behaviour.GetType())) continue;
 
+                    Debug.Log(
+                        $"%%%%%%%%%%%%%%%%% Inject -> {behaviour.GetType().Name}  ID:{behaviour.GetInstanceID()}");
                     Injector.Inject(behaviour);
                 }
             }

@@ -13,9 +13,7 @@ namespace SUG.Essentials
 
         public static void Initialize()
         {
-            if (_initialized)
-                return;
-
+            if (_initialized) return;
             _initialized = true;
 
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -27,7 +25,6 @@ namespace SUG.Essentials
 
         private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            Debug.Log("ScanScene");
             ScanScene(scene);
         }
 
@@ -105,15 +102,12 @@ namespace SUG.Essentials
                 }
             }
 
-            if (!isService)
-                return;
+            if (!isService) return;
 
-            //Debug.Log($"Register : {behaviour.GetType().Name}");
             foreach (var i in interfaces)
             {
                 // 跳过 Marker Interface
-                if (i == markerType)
-                    continue;
+                if (i == markerType) continue;
 
                 if (isScene)
                 {
@@ -125,10 +119,10 @@ namespace SUG.Essentials
                 }
             }
 
-            //foreach (var i in interfaces)
-            //{
-            //    Debug.Log($"  Interface : {i.Name}");
-            //}
+            foreach (var i in interfaces)
+            {
+                Debug.Log($"  Interface : {i.Name}");
+            }
         }
 
         #endregion
