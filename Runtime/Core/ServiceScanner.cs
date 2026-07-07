@@ -16,8 +16,8 @@ namespace SUG.Essentials
             if (_initialized) return;
             _initialized = true;
 
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            SceneManager.sceneUnloaded += OnSceneUnloaded;
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+            UnityEngine.SceneManagement.SceneManager.sceneUnloaded += OnSceneUnloaded;
 
             // 首次扫描全局服务
             ScanGlobal();
@@ -121,7 +121,7 @@ namespace SUG.Essentials
 
             foreach (var i in interfaces)
             {
-                Debug.Log($"  Interface : {i.Name}");
+                //Debug.Log($"  Interface : {i.Name}");
             }
         }
 

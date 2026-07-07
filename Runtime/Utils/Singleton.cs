@@ -16,26 +16,6 @@ namespace SUG.Essentials
     /// </summary>
     public class SingletonGlobal : ISingleton { }
 
-    // ==============================
-    // 全局父节点，挂在父节点下的子物体不会随着场景切换而销毁
-    //===============================
-    internal sealed class GlobalManagersRoot : MonoBehaviour
-    {
-        private static GlobalManagersRoot _instance;
-
-        private void Awake()
-        {
-            if (_instance != null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-
     /// <summary>
     /// 通用单例基类，自动处理实例查找、自动创建、自动挂对应父节点
     /// </summary>

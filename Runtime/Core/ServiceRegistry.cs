@@ -22,7 +22,7 @@ namespace SUG.Essentials
         {
             if (_sceneServices.ContainsKey(serviceType))
                 throw new Exception($"Scene Service [{serviceType.Name}] 已经注册。");
-            Debug.Log("+++ RegisterScene");
+
             _sceneServices.Add(serviceType, instance);
         }
 
@@ -45,7 +45,7 @@ namespace SUG.Essentials
         public static void ClearScene()
         {
             _sceneServices.Clear();
-            Debug.Log($"scene Services: {_sceneServices.Count}");
+            //Debug.Log($"scene Services: {_sceneServices.Count}");
         }
     }
 }

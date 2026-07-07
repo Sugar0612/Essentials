@@ -12,16 +12,17 @@ namespace SUG.Essentials
 
         public T OpenUI<T>() where T : UIBase
         {
-            Debug.Log($"OPEN UI : {typeof(T)}");
+            //Debug.Log($"OPEN UI : {typeof(T)}");
             string uiName = typeof(T).Name;
 
-            if (_uiCache.TryGetValue(uiName, out var ui))
+            if (_uiCache.TryGetValue(uiName, out var ui) && ui != null)
             {
                 ui.Show();
                 return ui as T;
             }
 
-            if (_panelCfg == null) _panelCfg = Essentials.Settings.uiSetting.panelCfg; 
+            if (_uiCache.ContainsKey(uiName)) _uiCache.Remove(uiName); // 如果Key存在，value为NULL，则销毁这个Key.
+            if (_panelCfg == null) _panelCfg = Essentials.Settings.uiSetting.panelCfg;
             var cfg  = _panelCfg.uiConfigs.Find(x => x.prefab.name == uiName);
             var prefab = cfg?.prefab;
 

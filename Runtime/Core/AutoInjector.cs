@@ -9,7 +9,7 @@ namespace SUG.Essentials
     {
         public static void Initialize()
         {
-            SceneManager.sceneLoaded += InjectScene;
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += InjectScene;
         }
 
         private static void InjectScene(Scene scene, LoadSceneMode mode)
@@ -27,8 +27,6 @@ namespace SUG.Essentials
                     // 没有 [EInject] 字段就直接跳过
                     if (!HasInjectField(behaviour.GetType())) continue;
 
-                    Debug.Log(
-                        $"%%%%%%%%%%%%%%%%% Inject -> {behaviour.GetType().Name}  ID:{behaviour.GetInstanceID()}");
                     Injector.Inject(behaviour);
                 }
             }

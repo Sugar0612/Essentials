@@ -12,7 +12,7 @@ namespace SUG.Essentials
         {
             if (_initialized) return;
             _initialized = true;
-
+            
             // 创建实例，为后续初始化做准备
             var root = new GameObject("[Essentials]");
             Object.DontDestroyOnLoad(root);
