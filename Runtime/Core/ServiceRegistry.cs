@@ -13,7 +13,10 @@ namespace SUG.Essentials
         public static void RegisterGlobal(Type serviceType, object instance)
         {
             if (_globalServices.ContainsKey(serviceType))
-                throw new Exception($"Global Service [{serviceType.Name}] 已经注册。");
+            {
+                Debug.LogWarning($"Global Service [{serviceType.Name}] 已经注册。");
+                return;
+            }
 
             _globalServices.Add(serviceType, instance);
         }
@@ -21,7 +24,10 @@ namespace SUG.Essentials
         public static void RegisterScene(Type serviceType, object instance)
         {
             if (_sceneServices.ContainsKey(serviceType))
-                throw new Exception($"Scene Service [{serviceType.Name}] 已经注册。");
+            {
+                Debug.LogWarning($"Scene Service [{serviceType.Name}] 已经注册。");
+                return;
+            }
 
             _sceneServices.Add(serviceType, instance);
         }

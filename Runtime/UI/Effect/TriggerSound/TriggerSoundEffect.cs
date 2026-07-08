@@ -8,7 +8,9 @@ namespace SUG.Essentials
         // —— Config variable ——
         private UISoundCueSO _soundCfg;
 
+        // Inject
         [EInject] private ICfgService _cfgMgr;
+        [EInject] private IAudioService _audioMgr;
 
         // =====================
         // Core function
@@ -29,7 +31,7 @@ namespace SUG.Essentials
         {
             if (_soundCfg == null) _soundCfg = _cfgMgr.GetConfig<UISoundCueSO>();
             AudioClip c = GetClip(trigger, types);
-            AudioManager.Get().Play(c);
+            _audioMgr.Play(c);
         }
 
         // =====================

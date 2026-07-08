@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SUG.Essentials
 {
-    public class ConfigManager : MonoBehaviour, ICfgService, ISceneService
+    public class ConfigManager : MonoBehaviour, ICfgService, ILocalService
     {
         [Header("当前场景所需的所有配置")]
         [SerializeField] private List<ScriptableObject> _configList = new();

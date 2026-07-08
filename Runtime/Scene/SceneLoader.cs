@@ -11,7 +11,7 @@ namespace SUG.Essentials
         [Scene, SerializeField]
         private string _firstGameScene;
 
-        [EInject] private ISceneManagementService _sceneMgr;
+        [EInject] private ISceneService _sceneMgr;
 
         void Start()
         {

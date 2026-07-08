@@ -12,19 +12,16 @@ namespace SUG.Essentials
         {
             if (_initialized) return;
             _initialized = true;
-            
-            // 创建实例，为后续初始化做准备
-            var root = new GameObject("[Essentials]");
-            Object.DontDestroyOnLoad(root);
 
             // 加载Essentials总配置表
             Settings = Resources.Load<EssentialsSettingsSO>("Essentials/Bootstrap");
 
-            // 注册场景中所有的 IGlobalService 和 ISceneService
+            // 注册场景中所有的 IGlobalService 和 ILocalService
             ServiceScanner.Initialize();
 
+            // 弃用：现在不再使用SceneLoad来注册初始化！，现在改成了给各个场景添加一个SceneBootstrap来注入初始化。
             // 场景中所有的Mono注入
-            AutoInjector.Initialize();
+            //AutoInjector.Initialize();
         }
 
         //public static void Inject(object target) => Injector.Inject(target);

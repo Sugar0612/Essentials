@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 namespace SUG.Essentials
 {
     [RequireComponent(typeof(AudioSource))]
-    public class AudioManager : Singleton<AudioManager, SingletonGlobal>, IAudioService
+    public class AudioManager : MonoBehaviour, IAudioService, IGlobalService
     {
         // —— Components ——
         private AudioSource _audioSource;

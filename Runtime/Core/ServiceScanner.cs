@@ -16,15 +16,19 @@ namespace SUG.Essentials
             if (_initialized) return;
             _initialized = true;
 
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+            //UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
             UnityEngine.SceneManagement.SceneManager.sceneUnloaded += OnSceneUnloaded;
 
             // 首次扫描全局服务
-            ScanGlobal();
+            //ScanGlobal();
         }
 
-        private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        public static void ScanRegister(Scene scene)
         {
+            // 全局IGlobalService注册
+            ScanGlobal();
+
+            // 局部场景ILocalService注册
             ScanScene(scene);
         }
 
@@ -40,6 +44,7 @@ namespace SUG.Essentials
         /// </summary>
         private static void ScanScene(Scene scene)
         {
+            // Debug.Log($"=========== Service 注册 ScanScene  {scene.name}");
             var roots = scene.GetRootGameObjects();
 
             foreach (var root in roots)
@@ -74,7 +79,7 @@ namespace SUG.Essentials
 
         private static void RegisterSceneService(MonoBehaviour behaviour)
         {
-            RegisterService(behaviour, typeof(ISceneService), true);
+            RegisterService(behaviour, typeof(ILocalService), true);
         }
 
         private static void RegisterGlobalService(MonoBehaviour behaviour)
@@ -109,19 +114,13 @@ namespace SUG.Essentials
                 // 跳过 Marker Interface
                 if (i == markerType) continue;
 
-                if (isScene)
-                {
-                    ServiceRegistry.RegisterScene(i, behaviour);
-                }
-                else
-                {
-                    ServiceRegistry.RegisterGlobal(i, behaviour);
-                }
+                if (isScene) ServiceRegistry.RegisterScene(i, behaviour);
+                else ServiceRegistry.RegisterGlobal(i, behaviour);
             }
 
             foreach (var i in interfaces)
             {
-                //Debug.Log($"  Interface : {i.Name}");
+                // Debug.Log($"  Interface : {i.Name}");
             }
         }
 
