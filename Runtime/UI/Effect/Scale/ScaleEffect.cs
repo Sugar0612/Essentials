@@ -10,29 +10,29 @@ namespace SUG.Essentials
         // —— Config variable ——
         [Header("交互变量")]
         public Vector3 _normalScale = new Vector3(1.0f, 1.0f, 1.0f);
-        public Vector3 _hoverScale = new Vector3(1.1f, 1.1f, 1.1f);
-        public Vector3 _selectScale = new Vector3(0.9f, 0.9f, 0.9f);
+        public Vector3 _zoominScale = new Vector3(1.1f, 1.1f, 1.1f);
+        public Vector3 _zoomoutScale = new Vector3(0.9f, 0.9f, 0.9f);
 
         [Header("动画时长")]
-        public float hoverDur = 1.0f;
-        public float clickDur = 0.3f;
+        public float zoominDur = 1.0f;
+        public float zoomoutDur = 0.3f;
 
         // ===================
         // Core
         // ===================
         public void OnZoomIn(Action callback = null)
         {
-            SetScale(_hoverScale, hoverDur, callback);
+            SetScale(_zoominScale, zoominDur, callback);
         }
 
         public void OnNormal(Action callback = null)
         {
-            SetScale(_normalScale, hoverDur, callback);
+            SetScale(_normalScale, zoominDur, callback);
         }
 
         public void OnZoomOut(Action callback = null)
         {
-            SetScale(_selectScale, clickDur, callback);
+            SetScale(_zoomoutScale, zoomoutDur, callback);
         }
 
         // ===================
@@ -50,6 +50,6 @@ namespace SUG.Essentials
 
         public override void Stop() => OnNormal();
 
-        public override void Other() => SetScale(_selectScale, clickDur, () => OnNormal());
+        public override void Other() => SetScale(_zoomoutScale, zoomoutDur, () => OnNormal());
     }
 }
