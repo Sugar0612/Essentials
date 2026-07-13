@@ -39,6 +39,15 @@ namespace SUG.Essentials
         }
 
         // 场景实例化
+        public static T Instantiate<T>(T prefab, Transform parent) where T : Object
+        {
+            var obj = Object.Instantiate(prefab, parent);
+
+            Inject(obj);
+
+            return obj;
+        }
+
         public static T Instantiate<T>(T prefab) where T : Object
         {
             var obj = Object.Instantiate(prefab);
