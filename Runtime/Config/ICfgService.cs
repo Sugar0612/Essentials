@@ -2,7 +2,7 @@
 using SUG.Essentials;
 using UnityEngine;
 
-public interface ICfgService 
+[Injectable] public interface ICfgService 
 {
     public T GetConfig<T>() where T : ScriptableObject;
 

@@ -20,7 +20,7 @@ namespace SUG.Essentials
                 {
                     if (behaviour == null) continue;
 
-                    // 没有 [EInject] 字段就直接跳过
+                    // 没有 [Inject] 字段就直接跳过
                     if (!HasInjectField(behaviour.GetType())) continue;
 
                     Inject(behaviour);
@@ -38,7 +38,7 @@ namespace SUG.Essentials
 
             foreach (var field in fields)
             {
-                if (Attribute.IsDefined(field, typeof(EInjectAttribute)))
+                if (Attribute.IsDefined(field, typeof(InjectAttribute)))
                     return true;
             }
 
@@ -59,7 +59,7 @@ namespace SUG.Essentials
 
             foreach (var field in fields)
             {
-                if (!Attribute.IsDefined(field, typeof(EInjectAttribute))) continue;
+                if (!Attribute.IsDefined(field, typeof(InjectAttribute))) continue;
 
                 var service = ServiceRegistry.Resolve(field.FieldType);
 

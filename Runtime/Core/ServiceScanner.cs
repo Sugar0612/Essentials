@@ -111,8 +111,8 @@ namespace SUG.Essentials
 
             foreach (var i in interfaces)
             {
-                // 跳过 Marker Interface
-                if (i == markerType) continue;
+                // 跳过没有 Injectable 标记的 interface。
+                if (!IsInjectInterface(i)) continue;
 
                 if (isScene) ServiceRegistry.RegisterScene(i, behaviour);
                 else ServiceRegistry.RegisterGlobal(i, behaviour);
@@ -122,6 +122,18 @@ namespace SUG.Essentials
             {
                 // Debug.Log($"  Interface : {i.Name}");
             }
+        }
+
+        /// <summary>
+        /// 是否为可注入的Interface
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private static bool IsInjectInterface(Type type)
+        {
+            return Attribute.IsDefined(
+                type,
+                typeof(InjectableAttribute));
         }
 
         #endregion

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace SUG.Essentials
 {
-    public interface ISceneService
+    [Injectable] public interface ISceneService
     {
         public event Action<Scene, LoadSceneMode> sceneLoaded;
         public event Action<Scene> sceneUnloaded;

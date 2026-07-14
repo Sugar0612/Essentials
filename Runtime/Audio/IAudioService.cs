@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SUG.Essentials
 {
-    public interface IAudioService
+    [Injectable] public interface IAudioService
     {
         public void Play(AudioClip clip);
         public AudioClip Play(string path);

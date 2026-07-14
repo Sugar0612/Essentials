@@ -9,8 +9,8 @@ namespace SUG.Essentials
         private UISoundCueSO _soundCfg;
 
         // Inject
-        [EInject] private ICfgService _cfgMgr;
-        [EInject] private IAudioService _audioMgr;
+        [Inject] private ICfgService _cfgMgr;
+        [Inject] private IAudioService _audioMgr;
 
         // =====================
         // Core function

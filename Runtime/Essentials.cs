@@ -16,7 +16,8 @@ namespace SUG.Essentials
             // 加载Essentials总配置表
             Settings = Resources.Load<EssentialsSettingsSO>("Essentials/Bootstrap");
 
-            // 注册场景中所有的 IGlobalService 和 ILocalService
+            // 启用规则：注册场景中所有的 IGlobalService 和 ILocalService
+            // 场景预载更新场景服务容器。
             ServiceScanner.Initialize();
 
             // 弃用：现在不再使用SceneLoad来注册初始化！，现在改成了给各个场景添加一个SceneBootstrap来注入初始化。
