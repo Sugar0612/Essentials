@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 namespace SUG.Essentials
 {
-    public sealed class SceneManager : MonoBehaviour, IGlobalService, ISceneService
+    [Service]
+    public sealed class SceneManager : MonoBehaviour, ISceneService
     {
         private string _currScene;
 

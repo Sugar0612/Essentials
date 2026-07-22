@@ -1,5 +1,7 @@
 using System;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 
 namespace SUG.Essentials
@@ -79,49 +81,47 @@ namespace SUG.Essentials
 
         private static void RegisterSceneService(MonoBehaviour behaviour)
         {
-            RegisterService(behaviour, typeof(ILocalService), true);
+            RegisterService(behaviour, true);
         }
 
         private static void RegisterGlobalService(MonoBehaviour behaviour)
         {
-            RegisterService(behaviour, typeof(IGlobalService), false);
+            RegisterService(behaviour, false);
         }
 
         /// <summary>
         /// 注册一个 Service
         /// </summary>
-        private static void RegisterService(MonoBehaviour behaviour, Type markerType, bool isScene)
+        private static void RegisterService(MonoBehaviour behaviour, bool isScene)
         {
+            // 如果没有Service作为Attribute那么不会注册
+            if (!HasServiceAttribute(behaviour.GetType())) return;
+
             var type = behaviour.GetType();
 
+            // 获取attribute里面的参数
+            var attribute = type.GetCustomAttribute<ServiceAttribute>();
+            string id                = attribute.id;
+            ServiceLifetime lifetime = attribute.lifetime;
+
+            // 获取服务接口
             var interfaces = ReflectionCache.GetInterfaces(type);
-
-            bool isService = false;
-
-            foreach (var i in interfaces)
-            {
-                if (i == markerType)
-                {
-                    isService = true;
-                    break;
-                }
-            }
-
-            if (!isService) return;
 
             foreach (var i in interfaces)
             {
                 // 跳过没有 Injectable 标记的 interface。
                 if (!IsInjectInterface(i)) continue;
 
-                if (isScene) ServiceRegistry.RegisterScene(i, behaviour);
-                else ServiceRegistry.RegisterGlobal(i, behaviour);
+                if (isScene) 
+                    ServiceRegistry.RegisterScene(new ServiceKey(i, id), behaviour);
+                else 
+                    ServiceRegistry.RegisterGlobal(new ServiceKey(i, id), behaviour);
             }
 
-            foreach (var i in interfaces)
-            {
-                // Debug.Log($"  Interface : {i.Name}");
-            }
+            //foreach (var i in interfaces)
+            //{
+            //    // Debug.Log($"  Interface : {i.Name}");
+            //}
         }
 
         /// <summary>
@@ -134,6 +134,16 @@ namespace SUG.Essentials
             return Attribute.IsDefined(
                 type,
                 typeof(InjectableAttribute));
+        }
+
+        /// <summary>
+        /// 该Type是否有[Service]作为Attribute？
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private static bool HasServiceAttribute(Type type)
+        {
+            return Attribute.IsDefined(type, typeof(ServiceAttribute));
         }
 
         #endregion

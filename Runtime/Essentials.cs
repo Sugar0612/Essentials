@@ -29,16 +29,6 @@ namespace SUG.Essentials
 
         //internal static void SetContainer(IObjectResolver resolver) => GlobalResolver = resolver;
 
-        public static T Resolve<T>()
-        {
-            return ServiceRegistry.Resolve<T>();
-        }
-
-        public static object Resolve(System.Type type)
-        {
-            return ServiceRegistry.Resolve(type);
-        }
-
         // 场景实例化
         public static T Instantiate<T>(T prefab, Transform parent) where T : Object
         {

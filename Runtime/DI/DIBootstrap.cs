@@ -7,7 +7,7 @@ namespace SUG.Essentials
     /// 负责场景 Service 注册与依赖注入。
     /// </summary>
     [DefaultExecutionOrder(-32000)]
-    public sealed class SceneBootstrap : MonoBehaviour
+    public sealed class DIBootstrap : MonoBehaviour
     {
         private void Awake()
         {

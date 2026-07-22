@@ -15,7 +15,7 @@ namespace SUG.Essentials
         /// <summary>
         /// 文件服务。
         /// </summary>
-        public sealed class FileManager : MonoBehaviour, IFileService, IGlobalService
+        [Service] public sealed class FileManager : MonoBehaviour, IFileService
         {
             #region Public
 

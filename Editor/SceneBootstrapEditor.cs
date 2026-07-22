@@ -30,12 +30,12 @@ namespace SUG.Essentials.Editor
 
         private static void EnsureBootstrapExists()
         {
-            if (Object.FindFirstObjectByType<SceneBootstrap>() != null)
+            if (Object.FindFirstObjectByType<DIBootstrap>() != null)
                 return;
 
             var go = new GameObject("[Essentials]");
 
-            go.AddComponent<SceneBootstrap>();
+            go.AddComponent<DIBootstrap>();
 
             Undo.RegisterCreatedObjectUndo(go, "Create SceneBootstrap");
 

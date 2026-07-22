@@ -46,12 +46,14 @@ namespace SUG.Essentials
         }
 
         // Core
+
+        // 注入
         public static void Inject(object target)
         {
             if (target == null) return;
 
+            // 获取脚本中声明的成员字段
             var type = target.GetType();
-
             var fields = type.GetFields(
                 BindingFlags.Instance |
                 BindingFlags.Public |
@@ -61,7 +63,10 @@ namespace SUG.Essentials
             {
                 if (!Attribute.IsDefined(field, typeof(InjectAttribute))) continue;
 
-                var service = ServiceRegistry.Resolve(field.FieldType);
+                InjectAttribute attribte = field.GetCustomAttribute<InjectAttribute>();
+                string id = attribte.id ?? "default";
+
+                var service = ServiceRegistry.Resolve(new ServiceKey(field.FieldType, id));
 
                 if (service == null) continue;
 
