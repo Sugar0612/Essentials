@@ -10,6 +10,7 @@ namespace SUG.Essentials
 
         public static void Initialize()
         {
+            Debug.Log("essentials initialize");
             if (_initialized) return;
             _initialized = true;
 
@@ -25,10 +26,7 @@ namespace SUG.Essentials
             //AutoInjector.Initialize();
         }
 
-        //public static void Inject(object target) => Injector.Inject(target);
-
-        //internal static void SetContainer(IObjectResolver resolver) => GlobalResolver = resolver;
-
+        #region Common
         // 场景实例化
         public static T Instantiate<T>(T prefab, Transform parent) where T : Object
         {
@@ -47,6 +45,10 @@ namespace SUG.Essentials
 
             return obj;
         }
+
+        #endregion
+
+        #region DI
 
         private static void Inject(Object obj)
         {
@@ -72,5 +74,13 @@ namespace SUG.Essentials
                 Injector.Inject(mono);
             }
         }
+
+        public static T Resolve<T>(string id = "default")
+        {
+            var t = typeof(T);
+            return ServiceRegistry.Resolve<T>(new ServiceKey(t, id));
+        }
+
+        #endregion
     }
 }
